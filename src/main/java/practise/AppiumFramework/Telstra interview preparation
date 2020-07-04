@@ -1,0 +1,146 @@
+Telstra interview preparation
+
+Amazon test accounts
+
+testshrid
+testaccount
+
+
+Remote Server
+- run server - java -jar /Users/shridharvenkatesh/Documents/amazon_uitest-automation/SeleniumServer/selenium-server-standalone-3.141.59.jar -role hub
+
+- run node -  java -jar /Users/shridharvenkatesh/Documents/amazon_uitest-automation/SeleniumClient/selenium-server-standalone-3.141.59.jar -role webdriver -hub http://100.00.0.7:4444/grid/register -port 5566
+
+https://www.mstsolutions.com/technical/execution-of-test-in-remote-machine-using-selenium-grid/
+
+sudo lsof -i :5900
+sudo kill 59553
+
+
+  @latelogin @all
+  Scenario Outline: As a customer i should be able to search, select product, add it to cart and it checkout
+    Given I am on amazon
+    When I search for "<item>"
+    And I select a random item from results
+    When I request item to be added to cart
+    Then I should be prompted to login to Amazon
+    When I successfully login to site item should be added to cart
+    Examples:
+      | item       |
+      | 65-inch TV |
+
+
+Exceptions
+
+
+    
+  @earlylogin @all
+  Scenario Outline: As a customer i should be able to search, select product, add it to cart and it checkout
+    Given I am on amazon
+    When I successfully do early login to site
+    Then I search for "<item>"
+    And I select a random item from results
+    Then selected item should be added to cart
+    And I should be able to check out the product
+    Examples:
+      | item       |
+      | 65-inch TV |
+
+GIT
+
+git log to get the log info of the branch
+
+
+Git squash
+- git checkout -b "demo"
+
+then make changes to file
+- git status to see the above changes
+git add .
+git commit -m "main commit"
+git push origin demo
+
+then make changes to file
+- git status to see the above changes
+git add .
+git commit -m "main commit two"
+git push origin demo
+
+then make changes to file
+- git status to see the above changes
+git add .
+git commit -m "main commit three"
+
+
+git rebase  -i HEAD~3
+squash the commits rather then pick so update it to S
+^O to overwrite ans ^X to exit
+
+git push origin demo -f to force push the changes
+then it will as again ask to update the comments
+erase the commit
+again ^O ^X
+Now 
+
+
+Git Cherry pick
+
+
+Java OOP pillars 
+- Inheritance -- property of an object to acquire all the properties and behaviours of parent object  Eg: Product as parent class TV is subclass 
+uses extends keyword and can do method overloading ie same method in parent and syb class
+single, multilevel, hierarchical -- multiple is not possible
+
+
+- Polymorphism -- compile time - method name is same but args is different , run time method -- same method args same and return type same but at run time JVM will decide which one it calls
+
+- Abstraction -- abstract class and interfaces
+abstract class is created using abstract keyword, can have constructors and method but object cant he created
+Interface - its a blue print of classes ie we can achive multiple inheritance using this ie class extends class and a method implements interface
+interface to interface inheritance is also possible
+
+
+- Encapsulation -- leads to data hiding using access modifiers public, private, protected
+
+final -- to define constant
+finally -- along wiht try catch block to execute few stamements which are mandatorly needed if exception occurs or not ex: DB connection close
+finalize -- to trigger garbage collection to free up memory space after execution
+
+primitive class to object class int to Integer with oops concepts we might have to do boxing and unboxing of primitive values into objects
+
+Stringbuffer and String builder these are mutable version of String ie changes will stay there but not on string
+buffer is synchronised, used when multiple threads work on same string
+builder is not synchronised, to be used in single thread env, no sync overhead and fast compared to buffer
+
+Stack and Heap memories
+
+Array list and Vectors
+AL is not synched, fast, you dont hav to define the size, uses iterator to traverse
+Vectors - synched, not thread safe, uses enum and Iterator
+
+Hashmap and Hashtable
+Map - not synched, allows null in k and v, is fast compared to table, traveressed using iterator
+Table - synched, doesnt allow k n value, slow, can use enum and Iterator to traverse
+
+equals and == operator
+== is memory reference
+equals compares values of the object
+
+abstract class and Interfaces
+abstract can have constructor but not interfaces
+A class can implement only 1 abstrat clas , can be public private or protected
+A class can implement multiple interfaces, have to be public or none
+
+Below abstract class run time polymorphism
+shape s = new shape ();
+s = new circle();
+s.draw();
+
+interface its by defaults abstract where implementing class needs to have body for the methods
+
+
+method overloading, method overriding
+
+multiple inheritance is not supported in Java
+
+
